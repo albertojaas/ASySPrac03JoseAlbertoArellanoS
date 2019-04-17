@@ -1,0 +1,144 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>P03</title><meta name="generator" content="MATLAB 8.6"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-04-14"><meta name="DC.source" content="P03.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#3">2.- Construya una funci&oacute;n que gr&aacute;fique funciones de <img src="P03_eq12888934164539987532.png" alt="$f:N\rightarrow R$"> en el formato de su elecci&oacute;n</a></li><li><a href="#4">3.- Construya una funci&oacute;n que gr&aacute;fique funciones de <img src="P03_eq16894167298513186129.png" alt="$f:N\rightarrow R^2$"> en el formato de su elecci&oacute;n y</a></li><li><a href="#5">4.- Programe una funci&oacute;n que calcule la energ&iacute;a de una se&ntilde;al en tiempo discreto la funci&oacute;n se debe llamar energiadis</a></li></ul></div><pre class="codeinput"><span class="comment">%</span>
+</pre><p>1.- Crea una funci&oacute;n que se llame fun1 y reciba dos parametros <img src="P03_eq01003107565813904020.png" alt="$\Omega$"> y <img src="P03_eq05508344529756732484.png" alt="$a$"> la funci&oacute;n debe</p><pre class="codeinput"><span class="comment">%regresar la evaluaci&oacute;n $f[n]=r^ncos[\Omega n]+ r^nsen(\Omega n)j$, esta funci&oacute;n debe trabajar con</span>
+<span class="comment">%$r\in R^+$, $\Omega\in R$ y $n\in  N^n$. Debe mostrar su c&oacute;digo en el reporte (sin ejecutar).</span>
+syms <span class="string">n</span>
+f1 = fun1(pi,4, n);
+
+<span class="comment">% Funcion fun1:</span>
+<span class="comment">% function [ f_1 ] = fun1( omega ,r )</span>
+<span class="comment">% syms n</span>
+<span class="comment">% f1 = r^n*cos(omega*n)+r^n*sin(omega*n);</span>
+<span class="comment">% f = @(n) f1;</span>
+<span class="comment">% f_1 = f(n);</span>
+<span class="comment">% end</span>
+</pre><h2>2.- Construya una funci&oacute;n que gr&aacute;fique funciones de <img src="P03_eq12888934164539987532.png" alt="$f:N\rightarrow R$"> en el formato de su elecci&oacute;n<a name="3"></a></h2><p>y pruebe su c&oacute;digo mostrando la gr&aacute;fica de <img src="P03_eq14492615976455928922.png" alt="$x[n]=na^nu[n]$"> vs <img src="P03_eq08984225997457563733.png" alt="$n$"> para <img src="P03_eq08133761054732296635.png" alt="$n\in {-2,...,10}$"> para <img src="P03_eq00212765013998882747.png" alt="$a=0.9$">,     no debe incluir el c&oacute;digo, solo el uso de la funci&oacute;n para mostrar la gr&aacute;fica, puede utilizar una funci&oacute;n anonima para este fin</p><pre class="codeinput">syms <span class="string">n</span>
+u = @(n) 1*(n&gt;=0);
+a = 0.9;
+f2 = @(n) n.*(a.^n).*u(n);
+n2 = 0:1:10;
+Grafica2(n2,f2(n2),<span class="string">'Gr&aacute;fica en R'</span>)
+</pre><img vspace="5" hspace="5" src="P03_01.png" alt=""> <h2>3.- Construya una funci&oacute;n que gr&aacute;fique funciones de <img src="P03_eq16894167298513186129.png" alt="$f:N\rightarrow R^2$"> en el formato de su elecci&oacute;n y<a name="4"></a></h2><p>pruebe su c&oacute;digo mostrando la gr&aacute;fica de la funci&oacute;n exponencial del primer problema, no debe incluir el c&oacute;digo, solo el uso de la funci&oacute;n para mostrarla gr&aacute;fica. Reporte la gr&aacute;fica de <img src="P03_eq08869918233192190351.png" alt="$f[n]$"> para <img src="P03_eq12706977765372392117.png" alt="$r=1.1$">, <img src="P03_eq03933324021199855378.png" alt="$\Omega=0.5$"> y <img src="P03_eq05063201140590064251.png" alt="$n\in{-2,...,20}$"> (recuerde que ya tiene una funci&oacute;n para esto). Reporte la gr&aacute;fica de <img src="P03_eq05380890773232186944.png" alt="$|f[n]|$"> vs <img src="P03_eq08984225997457563733.png" alt="$n$"> y <img src="P03_eq12048250087022819900.png" alt="$\angle f[n]$"> vs <img src="P03_eq08984225997457563733.png" alt="$n$">(puedes con sultar con help la descripci&oacute;n de abs, angle, atan2). Solo reporte las graficas.</p><pre class="codeinput">r = 1.1;
+omega = 0.5;
+n3 = -2:1:20;
+f3 = fun1(omega, r, n3);
+Grafica3(n3,f3(n3),<span class="string">'Gr&aacute;fica en R2'</span>);
+</pre><img vspace="5" hspace="5" src="P03_02.png" alt=""> <h2>4.- Programe una funci&oacute;n que calcule la energ&iacute;a de una se&ntilde;al en tiempo discreto la funci&oacute;n se debe llamar energiadis<a name="5"></a></h2><p>La funci&oacute;n recibe dos par&aacute;metros de entrada: el vector de tiempo y las alturas asignadas. La funci&oacute;n regresa la energ&iacute;a de la se&ntilde;al y despliega la gr&aacute;fica de la se&ntilde;al. Debe mostrar su c&oacute;digo en el reporte</p><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2015b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%
+%% 
+% 1.- Crea una función que se llame fun1 y reciba dos parametros $\Omega$ y $a$ la función debe 
+%regresar la evaluación $f[n]=r^ncos[\Omega n]+ r^nsen(\Omega n)j$, esta función debe trabajar con
+%$r\in R^+$, $\Omega\in R$ y $n\in  N^n$. Debe mostrar su código en el reporte (sin ejecutar).
+syms n
+f1 = fun1(pi,4, n);
+
+% Funcion fun1:
+% function [ f_1 ] = fun1( omega ,r )
+% syms n
+% f1 = r^n*cos(omega*n)+r^n*sin(omega*n);
+% f = @(n) f1;
+% f_1 = f(n);
+% end
+
+%% 2.- Construya una función que gráfique funciones de $f:N\rightarrow R$ en el formato de su elección
+% y pruebe su código mostrando la gráfica de $x[n]=na^nu[n]$ vs $n$ para $n\in {-2,...,10}$ para $a=0.9$, 
+%     no debe incluir el código, solo el uso de la función para mostrar la gráfica, puede utilizar una 
+% función anonima para este fin
+
+syms n 
+u = @(n) 1*(n>=0);
+a = 0.9;
+f2 = @(n) n.*(a.^n).*u(n);
+n2 = 0:1:10;
+Grafica2(n2,f2(n2),'Gráfica en R')
+
+%% 3.- Construya una función que gráfique funciones de $f:N\rightarrow R^2$ en el formato de su elección y 
+% pruebe su código mostrando la gráfica de la función exponencial del primer problema, no debe incluir el 
+% código, solo el uso de la función para mostrarla gráfica. Reporte la gráfica de $f[n]$ para $r=1.1$, $\Omega=0.5$ 
+% y $n\in{-2,...,20}$ (recuerde que ya tiene una función para esto). Reporte la gráfica de $|f[n]|$ vs $n$ y 
+% $\angle f[n]$ vs $n$(puedes con sultar con help la descripción de abs, angle, atan2). Solo reporte las graficas.
+r = 1.1;
+omega = 0.5;
+n3 = -2:1:20;
+f3 = fun1(omega, r, n3);
+Grafica3(n3,f3(n3),'Gráfica en R2');
+
+%% 4.- Programe una función que calcule la energía de una señal en tiempo discreto la función se debe llamar energiadis
+% La función recibe dos parámetros de entrada: el vector de tiempo y las
+% alturas asignadas. La función regresa la energía de la señal y despliega
+% la gráfica de la señal. Debe mostrar su código en el reporte
+
+
+
+
+
+##### SOURCE END #####
+--></body></html>
