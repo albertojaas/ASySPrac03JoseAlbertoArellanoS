@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>P03</title><meta name="generator" content="MATLAB 8.6"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-04-14"><meta name="DC.source" content="P03.m"><style type="text/css">
+      --><title>Pr&aacute;ctica 3: Se&ntilde;ales en tiempo discreto</title><meta name="generator" content="MATLAB 9.2"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-04-16"><meta name="DC.source" content="MarcosP3.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -66,8 +66,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#3">2.- Construya una funci&oacute;n que gr&aacute;fique funciones de <img src="P03_eq12888934164539987532.png" alt="$f:N\rightarrow R$"> en el formato de su elecci&oacute;n</a></li><li><a href="#4">3.- Construya una funci&oacute;n que gr&aacute;fique funciones de <img src="P03_eq16894167298513186129.png" alt="$f:N\rightarrow R^2$"> en el formato de su elecci&oacute;n y</a></li><li><a href="#5">4.- Programe una funci&oacute;n que calcule la energ&iacute;a de una se&ntilde;al en tiempo discreto la funci&oacute;n se debe llamar energiadis</a></li></ul></div><pre class="codeinput"><span class="comment">%</span>
-</pre><p>1.- Crea una funci&oacute;n que se llame fun1 y reciba dos parametros <img src="P03_eq01003107565813904020.png" alt="$\Omega$"> y <img src="P03_eq05508344529756732484.png" alt="$a$"> la funci&oacute;n debe</p><pre class="codeinput"><span class="comment">%regresar la evaluaci&oacute;n $f[n]=r^ncos[\Omega n]+ r^nsen(\Omega n)j$, esta funci&oacute;n debe trabajar con</span>
+  </style></head><body><div class="content"><h1>Pr&aacute;ctica 3: Se&ntilde;ales en tiempo discreto</h1><!--introduction--><p>Arellano S&aacute;nchez Jos&eacute; Alberto</p><p>L&oacute;pez Piedracruz Marcos Antonio</p><p>Luviano Murakawa Tsuioshi Alberto</p><p>Robles Cernas Carlos de Jes&uacute;s</p><p>2MV1</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Introducci&oacute;n</a></li><li><a href="#2">Ejercicio 1</a></li><li><a href="#3">Ejercicio 2</a></li><li><a href="#4">Ejercicio 3</a></li><li><a href="#5">Ejercicio 4</a></li><li><a href="#6">Ejercicio 5</a></li><li><a href="#7">Ejercicio 6</a></li><li><a href="#8">Ap&eacute;ndice</a></li></ul></div><h2 id="1">Introducci&oacute;n</h2><p>Escalamiento horizontal de se&ntilde;ales en tiempo discreto.</p><p>El escalamiento horizontal se define como:</p><p>g[n]=?_hb {f[n]}=f[bn]</p><p>Siendo f[n] nuestra se&ntilde;al base y ?_hb nuestro escalamiento horizontal b.</p><p>f[n]= 2;   -4&lt;bn&lt;2</p><pre>    n-1; 1&lt;bn&lt;6</pre><p>Despejando  n nos queda de la siguiente manera:</p><p>f[n]= 2;   -4/b&lt;n&lt;-2/b</p><pre>     n-1; 1/b&lt;n&lt;6/b</pre><p>Cuando tenemos una funci&oacute;n cualquiera escalada en un valor b, si b&lt;1 nuestra se&ntilde;al original se expande, por otro lado, si b&gt;1 nuestra se&ntilde;al se compacta. Es importante hacer &eacute;nfasis en que si el resultado de la funci&oacute;n en n no est&aacute; definido como un entero. Al comprimirse sucede algo llamado &#8220;Decimation&#8221; haciendo que se pierdan datos y se conserven los b-&eacute;simos n&uacute;meros. Cuando b&lt;0 suceden 2 cosas, la grafica se invierte y se comprime o expande dependiendo del valor de b.</p><p>Ejemplo:</p><p>Sea f[x]= -n   -4&lt;n&lt;-2</p><pre>          n   -1&lt;n&lt;6</pre><p>Escale la funcion horizontalmente en b=5.</p><p>Se sustituye bn en n, en este caso b=-5.</p><p>f[x]= -n   -4&lt;5n&lt;-2</p><pre>      n   -1&lt;5n&lt;6</pre><p>Despejamos n y cambiamos los limites.</p><p>f[x]= -n   -4/5&lt;n&lt;-2/5</p><pre>      n   -1/5&lt;n&lt;6/5</pre><h2 id="2">Ejercicio 1</h2><p>Crea una funci&oacute;n que se llame <i>fun1</i> y reciba dos parametros <img src="MarcosP3_eq01003107565813904020.png" alt="$\Omega$"> y <img src="MarcosP3_eq05508344529756732484.png" alt="$a$"> la funci&oacute;n debe</p><pre class="codeinput"><span class="comment">%regresar la evaluaci&oacute;n $f[n]=r^ncos[\Omega n]+ r^nsen(\Omega n)j$, esta funci&oacute;n debe trabajar con</span>
 <span class="comment">%$r\in R^+$, $\Omega\in R$ y $n\in  N^n$. Debe mostrar su c&oacute;digo en el reporte (sin ejecutar).</span>
 syms <span class="string">n</span>
 f1 = fun1(pi,4, n);
@@ -79,22 +78,180 @@ f1 = fun1(pi,4, n);
 <span class="comment">% f = @(n) f1;</span>
 <span class="comment">% f_1 = f(n);</span>
 <span class="comment">% end</span>
-</pre><h2>2.- Construya una funci&oacute;n que gr&aacute;fique funciones de <img src="P03_eq12888934164539987532.png" alt="$f:N\rightarrow R$"> en el formato de su elecci&oacute;n<a name="3"></a></h2><p>y pruebe su c&oacute;digo mostrando la gr&aacute;fica de <img src="P03_eq14492615976455928922.png" alt="$x[n]=na^nu[n]$"> vs <img src="P03_eq08984225997457563733.png" alt="$n$"> para <img src="P03_eq08133761054732296635.png" alt="$n\in {-2,...,10}$"> para <img src="P03_eq00212765013998882747.png" alt="$a=0.9$">,     no debe incluir el c&oacute;digo, solo el uso de la funci&oacute;n para mostrar la gr&aacute;fica, puede utilizar una funci&oacute;n anonima para este fin</p><pre class="codeinput">syms <span class="string">n</span>
+</pre><h2 id="3">Ejercicio 2</h2><p>Construya una funci&oacute;n que gr&aacute;fique funciones de <img src="MarcosP3_eq12888934164539987532.png" alt="$f:N\rightarrow R$"> en el formato de su elecci&oacute;n y pruebe su c&oacute;digo mostrando la gr&aacute;fica de <img src="MarcosP3_eq14492615976455928922.png" alt="$x[n]=na^nu[n]$"> vs <img src="MarcosP3_eq08984225997457563733.png" alt="$n$"> para <img src="MarcosP3_eq08133761054732296635.png" alt="$n\in {-2,...,10}$"> para <img src="MarcosP3_eq00212765013998882747.png" alt="$a=0.9$">,     no debe incluir el c&oacute;digo, solo el uso de la funci&oacute;n para mostrar la gr&aacute;fica, puede utilizar una funci&oacute;n anonima para este fin</p><pre class="codeinput">syms <span class="string">n</span>
 u = @(n) 1*(n&gt;=0);
 a = 0.9;
 f2 = @(n) n.*(a.^n).*u(n);
 n2 = 0:1:10;
 Grafica2(n2,f2(n2),<span class="string">'Gr&aacute;fica en R'</span>)
-</pre><img vspace="5" hspace="5" src="P03_01.png" alt=""> <h2>3.- Construya una funci&oacute;n que gr&aacute;fique funciones de <img src="P03_eq16894167298513186129.png" alt="$f:N\rightarrow R^2$"> en el formato de su elecci&oacute;n y<a name="4"></a></h2><p>pruebe su c&oacute;digo mostrando la gr&aacute;fica de la funci&oacute;n exponencial del primer problema, no debe incluir el c&oacute;digo, solo el uso de la funci&oacute;n para mostrarla gr&aacute;fica. Reporte la gr&aacute;fica de <img src="P03_eq08869918233192190351.png" alt="$f[n]$"> para <img src="P03_eq12706977765372392117.png" alt="$r=1.1$">, <img src="P03_eq03933324021199855378.png" alt="$\Omega=0.5$"> y <img src="P03_eq05063201140590064251.png" alt="$n\in{-2,...,20}$"> (recuerde que ya tiene una funci&oacute;n para esto). Reporte la gr&aacute;fica de <img src="P03_eq05380890773232186944.png" alt="$|f[n]|$"> vs <img src="P03_eq08984225997457563733.png" alt="$n$"> y <img src="P03_eq12048250087022819900.png" alt="$\angle f[n]$"> vs <img src="P03_eq08984225997457563733.png" alt="$n$">(puedes con sultar con help la descripci&oacute;n de abs, angle, atan2). Solo reporte las graficas.</p><pre class="codeinput">r = 1.1;
+</pre><img vspace="5" hspace="5" src="MarcosP3_01.png" alt=""> <h2 id="4">Ejercicio 3</h2><p>Construya una funci&oacute;n que gr&aacute;fique funciones de <img src="MarcosP3_eq16894167298513186129.png" alt="$f:N\rightarrow R^2$"> en el formato de su elecci&oacute;n y pruebe su c&oacute;digo mostrando la gr&aacute;fica de la funci&oacute;n exponencial del primer problema, no debe incluir el c&oacute;digo, solo el uso de la funci&oacute;n para mostrarla gr&aacute;fica. Reporte la gr&aacute;fica de <img src="MarcosP3_eq08869918233192190351.png" alt="$f[n]$"> para <img src="MarcosP3_eq12706977765372392117.png" alt="$r=1.1$">, <img src="MarcosP3_eq03933324021199855378.png" alt="$\Omega=0.5$"> y <img src="MarcosP3_eq05063201140590064251.png" alt="$n\in{-2,...,20}$"> (recuerde que ya tiene una funci&oacute;n para esto). Reporte la gr&aacute;fica de <img src="MarcosP3_eq05380890773232186944.png" alt="$|f[n]|$"> vs <img src="MarcosP3_eq08984225997457563733.png" alt="$n$"> y <img src="MarcosP3_eq12048250087022819900.png" alt="$\angle f[n]$"> vs <img src="MarcosP3_eq08984225997457563733.png" alt="$n$">(puedes con sultar con help la descripci&oacute;n de abs, angle, atan2). Solo reporte las graficas.</p><pre class="codeinput">r = 1.1;
 omega = 0.5;
 n3 = -2:1:20;
 f3 = fun1(omega, r, n3);
-Grafica3(n3,f3(n3),<span class="string">'Gr&aacute;fica en R2'</span>);
-</pre><img vspace="5" hspace="5" src="P03_02.png" alt=""> <h2>4.- Programe una funci&oacute;n que calcule la energ&iacute;a de una se&ntilde;al en tiempo discreto la funci&oacute;n se debe llamar energiadis<a name="5"></a></h2><p>La funci&oacute;n recibe dos par&aacute;metros de entrada: el vector de tiempo y las alturas asignadas. La funci&oacute;n regresa la energ&iacute;a de la se&ntilde;al y despliega la gr&aacute;fica de la se&ntilde;al. Debe mostrar su c&oacute;digo en el reporte</p><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2015b</a><br></p></div><!--
+Grafica3(n3,f3(n3),<span class="string">'Gr&aacute;fica en R2'</span>)
+</pre><img vspace="5" hspace="5" src="MarcosP3_02.png" alt=""> <h2 id="5">Ejercicio 4</h2><p>Programe una funci&oacute;n que calcule la energ&iacute;a de una se&ntilde;al en tiempo discreto la funci&oacute;n se debe llamar <i>energiadis</i>. La funci&oacute;n recibe dos param&eacute;tros de entrada: el vector de tiempo y las alturas asignadas. La funci&oacute;n regresa la energia de la se&ntilde;al y despliega la gr&aacute;fica de la se&ntilde;al. Debe mostrar su c&oacute;digo en el reporte (sin ejecutar).</p><pre class="codeinput"><span class="comment">%k=input ('&iquest;Hasta que n&uacute;mero realizar el usuario?');</span>
+<span class="comment">%s=0;</span>
+
+<span class="comment">%for n=-k:k</span>
+<span class="comment">%    s=s+abs((n)^2);</span>
+<span class="comment">%end</span>
+
+<span class="comment">%disp(s);</span>
+</pre><h2 id="6">Ejercicio 5</h2><p>Resuelva el problema 3.1.1 c) de Lathi, aplicando su funci&oacute;n anterior.</p><pre class="codeinput"><span class="comment">%a)</span>
+k=3;
+s_1=0;
+s_2=0;
+
+<span class="keyword">for</span> n=-k:0
+    s_1=s_1+abs((n+3)^2);
+<span class="keyword">end</span>
+
+<span class="keyword">for</span> n=1:k
+    s_2=s_2+abs((n-3)^2);
+<span class="keyword">end</span>
+
+s=s_1+s_2;
+disp(s);
+<span class="comment">%</span>
+<span class="comment">%b)</span>
+k=6;
+s_1=0;
+s_2=0;
+
+<span class="keyword">for</span> n=0:3
+    s_1=s_1+abs((n)^2);
+<span class="keyword">end</span>
+
+<span class="keyword">for</span> n=4:k
+    s_2=s_2+abs((-n+6)^2);
+<span class="keyword">end</span>
+
+s=s_1+s_2;
+disp(s);
+<span class="comment">%</span>
+<span class="comment">%c)</span>
+k=3;
+s=0;
+
+<span class="keyword">for</span> n=-k:k
+    s=s+abs((3.*n)^2);
+<span class="keyword">end</span>
+
+disp(s);
+<span class="comment">%</span>
+<span class="comment">%d)</span>
+k=2;
+s_1=0;
+s_2=0;
+
+<span class="keyword">for</span> n=-k:0
+    s_1=s_1+abs((-2.*n)^2);
+<span class="keyword">end</span>
+
+<span class="keyword">for</span> n=0:k
+    s_2=s_2+abs((2.*n)^2);
+<span class="keyword">end</span>
+
+s=s_1+s_2;
+disp(s);
+</pre><pre class="codeoutput">    19
+
+    19
+
+   252
+
+    40
+
+</pre><h2 id="7">Ejercicio 6</h2><pre class="codeinput"><span class="comment">%Resuelve el problema 3.2.3 de Lathi</span>
+x=[-10:1:10];
+y=[-10:1:10];
+
+figure
+subplot(2,3,1), stem(-x,y,<span class="string">'filled'</span>), title(<span class="string">'x[-n]'</span>);
+grid <span class="string">on</span>;
+
+subplot(2,3,2), stem ((x-6),y,<span class="string">'filled'</span>),title(<span class="string">'x[n+6]'</span>);;
+grid <span class="string">on</span>;
+
+subplot(2,3,3), stem ((x+6),y,<span class="string">'filled'</span>),title(<span class="string">'x[n-6]'</span>);;
+grid <span class="string">on</span>;
+
+subplot(2,3,4), stem ((x/3),y,<span class="string">'filled'</span>),title(<span class="string">'x[3n]'</span>);
+grid <span class="string">on</span>;
+
+subplot(2,3,5), stem ((3*x),y,<span class="string">'filled'</span>),title(<span class="string">'x[n/3]'</span>);
+grid <span class="string">on</span>;
+
+subplot(2,3,6), stem ((3+x),-y,<span class="string">'filled'</span>),title(<span class="string">'x[3-n]'</span>);
+grid <span class="string">on</span>;
+</pre><img vspace="5" hspace="5" src="MarcosP3_03.png" alt=""> <h2 id="8">Ap&eacute;ndice</h2><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2017a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
+%% Práctica 3: Señales en tiempo discreto
 %
-%% 
-% 1.- Crea una función que se llame fun1 y reciba dos parametros $\Omega$ y $a$ la función debe 
+% Arellano Sánchez José Alberto
+%
+% López Piedracruz Marcos Antonio
+%
+% Luviano Murakawa Tsuioshi Alberto
+%
+% Robles Cernas Carlos de Jesús
+%
+% 2MV1
+
+
+%% Introducción
+% Escalamiento horizontal de señales en tiempo discreto.
+%
+% El escalamiento horizontal se define como: 
+%
+% g[n]=?_hb {f[n]}=f[bn]
+%
+% Siendo f[n] nuestra señal base y ?_hb nuestro escalamiento horizontal b.
+%
+% f[n]= 2;   -4<bn<2
+%
+%      n-1; 1<bn<6      
+%
+% Despejando  n nos queda de la siguiente manera:
+%
+% f[n]= 2;   -4/b<n<-2/b
+%
+%       n-1; 1/b<n<6/b 
+%
+% Cuando tenemos una función cualquiera escalada en un valor b, si b<1 
+% nuestra señal original se expande, por otro lado, si b>1 nuestra señal 
+% se compacta. Es importante hacer énfasis en que si el resultado de la 
+% función en n no está definido como un entero.
+% Al comprimirse sucede algo llamado “Decimation” haciendo que se pierdan 
+% datos y se conserven los b-ésimos números. 
+% Cuando b<0 suceden 2 cosas, la grafica se invierte y se comprime o 
+% expande dependiendo del valor de b.
+% 
+% Ejemplo:
+%
+% Sea f[x]= -n   -4<n<-2  
+%
+%            n   -1<n<6
+%
+% Escale la funcion horizontalmente en b=5.
+%
+% Se sustituye bn en n, en este caso b=-5.
+%
+% f[x]= -n   -4<5n<-2  
+%
+%        n   -1<5n<6
+% 
+% Despejamos n y cambiamos los limites.
+%
+% f[x]= -n   -4/5<n<-2/5  
+%
+%        n   -1/5<n<6/5
+%
+%
+
+%% Ejercicio 1
+%
+% Crea una función que se llame _fun1_ y reciba dos parametros $\Omega$ y $a$ la función debe 
 %regresar la evaluación $f[n]=r^ncos[\Omega n]+ r^nsen(\Omega n)j$, esta función debe trabajar con
 %$r\in R^+$, $\Omega\in R$ y $n\in  N^n$. Debe mostrar su código en el reporte (sin ejecutar).
 syms n
@@ -107,12 +264,11 @@ f1 = fun1(pi,4, n);
 % f = @(n) f1;
 % f_1 = f(n);
 % end
-
-%% 2.- Construya una función que gráfique funciones de $f:N\rightarrow R$ en el formato de su elección
+%% Ejercicio 2
+% Construya una función que gráfique funciones de $f:N\rightarrow R$ en el formato de su elección
 % y pruebe su código mostrando la gráfica de $x[n]=na^nu[n]$ vs $n$ para $n\in {-2,...,10}$ para $a=0.9$, 
 %     no debe incluir el código, solo el uso de la función para mostrar la gráfica, puede utilizar una 
 % función anonima para este fin
-
 syms n 
 u = @(n) 1*(n>=0);
 a = 0.9;
@@ -120,7 +276,8 @@ f2 = @(n) n.*(a.^n).*u(n);
 n2 = 0:1:10;
 Grafica2(n2,f2(n2),'Gráfica en R')
 
-%% 3.- Construya una función que gráfique funciones de $f:N\rightarrow R^2$ en el formato de su elección y 
+%% Ejercicio 3
+% Construya una función que gráfique funciones de $f:N\rightarrow R^2$ en el formato de su elección y 
 % pruebe su código mostrando la gráfica de la función exponencial del primer problema, no debe incluir el 
 % código, solo el uso de la función para mostrarla gráfica. Reporte la gráfica de $f[n]$ para $r=1.1$, $\Omega=0.5$ 
 % y $n\in{-2,...,20}$ (recuerde que ya tiene una función para esto). Reporte la gráfica de $|f[n]|$ vs $n$ y 
@@ -129,16 +286,110 @@ r = 1.1;
 omega = 0.5;
 n3 = -2:1:20;
 f3 = fun1(omega, r, n3);
-Grafica3(n3,f3(n3),'Gráfica en R2');
-
-%% 4.- Programe una función que calcule la energía de una señal en tiempo discreto la función se debe llamar energiadis
-% La función recibe dos parámetros de entrada: el vector de tiempo y las
-% alturas asignadas. La función regresa la energía de la señal y despliega
-% la gráfica de la señal. Debe mostrar su código en el reporte
+Grafica3(n3,f3(n3),'Gráfica en R2')
 
 
+%% Ejercicio 4
+% Programe una función que calcule la energía de una señal en tiempo
+% discreto la función se debe llamar _energiadis_. La función recibe dos
+% paramétros de entrada: el vector de tiempo y las alturas asignadas. La
+% función regresa la energia de la señal y despliega la gráfica de la
+% señal. Debe mostrar su código en el reporte (sin ejecutar).
+% 
 
+%k=input ('¿Hasta que número realizar el usuario?');
+%s=0;
 
+%for n=-k:k
+%    s=s+abs((n)^2);
+%end
 
+%disp(s);
+%% Ejercicio 5
+% Resuelva el problema 3.1.1 c) de Lathi, aplicando su función anterior.
+%a)
+k=3;
+s_1=0;
+s_2=0;
+
+for n=-k:0
+    s_1=s_1+abs((n+3)^2);
+end
+
+for n=1:k
+    s_2=s_2+abs((n-3)^2);
+end
+
+s=s_1+s_2;
+disp(s);
+%
+%b)
+k=6;
+s_1=0;
+s_2=0;
+
+for n=0:3
+    s_1=s_1+abs((n)^2);
+end
+
+for n=4:k
+    s_2=s_2+abs((-n+6)^2);
+end
+
+s=s_1+s_2;
+disp(s);
+%
+%c)
+k=3;
+s=0;
+
+for n=-k:k
+    s=s+abs((3.*n)^2);
+end
+
+disp(s);
+%
+%d)
+k=2;
+s_1=0;
+s_2=0;
+
+for n=-k:0
+    s_1=s_1+abs((-2.*n)^2);
+end
+
+for n=0:k
+    s_2=s_2+abs((2.*n)^2);
+end
+
+s=s_1+s_2;
+disp(s);
+
+%% Ejercicio 6
+%Resuelve el problema 3.2.3 de Lathi 
+x=[-10:1:10];
+y=[-10:1:10];
+
+figure
+subplot(2,3,1), stem(-x,y,'filled'), title('x[-n]');
+grid on;
+
+subplot(2,3,2), stem ((x-6),y,'filled'),title('x[n+6]');;
+grid on;
+
+subplot(2,3,3), stem ((x+6),y,'filled'),title('x[n-6]');;
+grid on;
+
+subplot(2,3,4), stem ((x/3),y,'filled'),title('x[3n]');
+grid on;
+
+subplot(2,3,5), stem ((3*x),y,'filled'),title('x[n/3]');
+grid on;
+
+subplot(2,3,6), stem ((3+x),-y,'filled'),title('x[3-n]');
+grid on;
+
+%% Apéndice
+% 
 ##### SOURCE END #####
 --></body></html>
